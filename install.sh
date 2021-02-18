@@ -11,3 +11,9 @@ else
     echo -e "source \"$DIR/load.sh\"" >> ~/.bashrc
     echo -e "# DOTFILES_END\n" >> ~/.bashrc
 fi
+
+# Ensure socat is installed in container
+if [[ $(command -v socat > /dev/null; echo $?) == 1 ]]; then
+    echo "Installing socat"
+    sudo apt update && sudo apt install -y socat
+fi
